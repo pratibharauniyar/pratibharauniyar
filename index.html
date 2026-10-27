@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratibha Rauniyar | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --card: #121a2d;
+      --text: #f4f7ff;
+      --muted: #a9b5cc;
+      --accent: #8b9cff;
+      --mint: #70e1d0;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 16, 32, 0.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--mint);
+    }
+
+    /* Hero section */
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 50px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .eyebrow {
+      color: var(--mint);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.15;
+      margin: 18px 0;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--accent), var(--mint));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p,
+    .section-intro {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0b1020;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, #19243b, #121a2d);
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .avatar {
+      width: 85px;
+      height: 85px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--mint));
+      color: #0b1020;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .profile-card h2 {
+      margin-bottom: 5px;
+    }
+
+    .profile-card .role {
+      color: var(--mint);
+      margin-bottom: 20px;
+    }
+
+    .profile-card ul {
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .profile-card li {
+      margin: 10px 0;
+    }
+
+    /* General sections */
+    section:not(.hero) {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 42px);
+      margin: 10px 0;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      background: #19243b;
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .skill {
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 25px 10px;
+      transition: 0.3s;
+    }
+
+    .skill:hover,
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .skill h3 {
+      color: var(--mint);
+      margin-bottom: 5px;
+    }
+
+    .skill p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Projects */
+    .project-label {
+      color: var(--mint);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Contact */
+    .contact-box {
+      padding: 35px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(120deg, #19243b, #121a2d);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 600px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        align-items: flex-start;
+        padding: 20px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">Pratibha<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Home -->
+    <section class="container hero" id="home">
+      <div>
+        <p class="eyebrow">Welcome to my portfolio</p>
+
+        <h1>
+          Hi, I'm <span class="gradient">Pratibha Rauniyar.</span>
+        </h1>
+
+        <p>
+          A Computer Science Engineering student, aspiring software
+          engineer, and creative thinker. I enjoy exploring ideas,
+          solving problems, and bringing creativity and technology together.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+          <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">PR</div>
+
+        <h2>Pratibha Rauniyar</h2>
+        <p class="role">CSE Student | Aspiring Software Engineer</p>
+
+        <ul>
+          <li>🎓 B.Tech in Computer Science Engineering</li>
+          <li>🏫 ABES Engineering College</li>
+          <li>💡 Web Development & Problem Solving</li>
+          <li>🌱 Learning Backend Development and DSA</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <p class="eyebrow">A little about me</p>
+        <h2 class="section-title">Curious by nature. Creative by mind.</h2>
+
+        <p class="section-intro">
+          I believe growth comes from staying curious, experimenting
+          with ideas, and learning something new every day.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>My Journey</h3>
+            <p>
+              I'm pursuing Computer Science Engineering at ABES Engineering
+              College. I'm strengthening my programming, web development,
+              and data structures fundamentals while exploring how technology
+              can solve meaningful problems.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Beyond Coding</h3>
+            <p>
+              Creativity is a big part of who I am. Outside coding, I enjoy
+              mandala art, calligraphy, reading, writing, music, and chess.
+              I love exploring new ideas and looking at things from different
+              perspectives.
+            </p>
+
+            <div class="interests">
+              <span class="chip">🎨 Mandala Art</span>
+              <span class="chip">✍️ Calligraphy</span>
+              <span class="chip">📚 Reading & Writing</span>
+              <span class="chip">♟️ Chess</span>
+              <span class="chip">🎵 Music</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <p class="eyebrow">What I use</p>
+        <h2 class="section-title">Tech Stack</h2>
+
+        <p class="section-intro">
+          Technologies I'm learning and using as I continue to grow as a developer.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill">
+            <h3>C++</h3>
+            <p>Programming</p>
+          </div>
+
+          <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Web Development</p>
+          </div>
+
+          <div class="skill">
+            <h3>HTML5</h3>
+            <p>Web Structure</p>
+          </div>
+
+          <div class="skill">
+            <h3>CSS3</h3>
+            <p>Web Styling</p>
+          </div>
+
+          <div class="skill">
+            <h3>Python</h3>
+            <p>Programming</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <p class="eyebrow">Things I've built</p>
+        <h2 class="section-title">Featured Projects</h2>
+
+        <p class="section-intro">
+          Projects that bring together technology, accessibility, and learning.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <span class="project-label">AI · Education · Accessibility</span>
+            <h3 style="margin-top: 12px;">Prashikhsha</h3>
+            <p>
+              An AI-based learning platform designed to make learning
+              more accessible through support for multiple languages.
+            </p>
+            <a class="project-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              Add Project Repository ↗
+            </a>
+          </div>
+
+          <div class="card">
+            <span class="project-label">Learning & Building</span>
+            <h3 style="margin-top: 12px;">More Projects Coming Soon</h3>
+            <p>
+              I'm continuing to learn, experiment, and build projects
+              that strengthen my development and problem-solving skills.
+            </p>
+            <a class="project-link" href="#contact">Connect With Me ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <div class="container">
+        <p class="eyebrow">Milestones</p>
+        <h2 class="section-title">Achievements</h2>
+
+        <div class="card">
+          <h3>🏆 Second Position — HackIndia Hackathon</h3>
+          <p>
+            Collaborated with a team to develop an AI-based learning
+            platform focused on making education accessible in multiple languages.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <p class="eyebrow">Have an idea?</p>
+            <h2 class="section-title">Let's connect and create.</h2>
+            <p>
+              I'm open to learning from others, exchanging ideas,
+              and connecting with people who enjoy building meaningful things.
+            </p>
+          </div>
+
+          <div class="buttons">
+            <a class="btn btn-primary"
+               href="https://www.linkedin.com/"
+               target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+
+            <a class="btn btn-secondary"
+               href="https://github.com/"
+               target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+
+            <a class="btn btn-secondary"
+               href="mailto:your.email@example.com">Email Me ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Pratibha Rauniyar · Made with curiosity and creativity.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
